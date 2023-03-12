@@ -35,10 +35,6 @@ def scrape(url):
 
     return text_dict
 
-yup = scrape("https://en.wikipedia.org/wiki/War_of_1812")
-for i in yup:
-    print(i)
-
 
 
 
