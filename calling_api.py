@@ -2,7 +2,7 @@ import openai
 
 
 def call_api(text):
-    openai.api_key = "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"
+    openai.api_key = "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"
     model_engine = "text-davinci-003"
     prompt = "for every sentence in the following text, assign that sentence a rating from 0 to 100 for how factual and accurate they are, then once every sentence has a rating, average all of the ratings and output the final average percentage? format the answer as a percentage then explain which parts are false in 20 words using examples of evidence. this is important however, only output a number in percentage form, and 4 sentences that explain the response. \n"
 
@@ -27,7 +27,7 @@ def call_api(text):
 
 
 def check_response(text):
-    openai.api_key = "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"
+    openai.api_key = "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"
     model_engine = "text-davinci-003"
     prompt = "if the following text is free of all derogatory comments and false information then return a 1, if there is inappropriate language return a 0. your output must only be a single digit, 0 or 1. \n"
 
@@ -50,7 +50,14 @@ def check_response(text):
 
     return response
 
-
+def calling_all(text):
+    answer = call_api(text)
+    final = check_response(answer)
+    if final == 0:
+        print('Please ask another question')
+    else:
+        print('success')
+        return final
 
 def main():
     text = input("insert text: \n")
@@ -66,4 +73,4 @@ def main():
     print('*** PLEASE NOTE, THE INFORMATION ABOVE IS BASED UPON AN AI MODEL, WHICH MAY HAVE BEEN TRAINED USING INACCURATE DATA, IT IS ONLY A SUGGESTION ***')
 
 
-main()
+
